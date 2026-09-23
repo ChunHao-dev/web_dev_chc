@@ -1,0 +1,23 @@
+<svg width="1088" height="612" viewBox="0 0 1088 612" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1088" height="612" rx="20" fill="#0B1220"/>
+  <circle cx="860" cy="124" r="180" fill="#12345A" opacity="0.6"/>
+  <circle cx="170" cy="540" r="230" fill="#102D42" opacity="0.8"/>
+  <path d="M0 454C180 390 302 392 470 454C650 520 844 528 1088 426V612H0V454Z" fill="#0F2438"/>
+  <path d="M0 472C180 408 302 410 470 472C650 538 844 546 1088 444" stroke="#2DD4BF" stroke-width="3" opacity="0.7"/>
+  <path d="M716 458L884 170L932 458H716Z" fill="#162F49" stroke="#60A5FA" stroke-width="4"/>
+  <path d="M752 395H905M773 344H896M796 293H887M820 242H878" stroke="#60A5FA" stroke-width="4" opacity="0.75"/>
+  <path d="M145 225C278 151 400 151 535 225" stroke="#FBBF24" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 14"/>
+  <path d="M527 225L508 207M527 225L502 229" stroke="#FBBF24" stroke-width="5" stroke-linecap="round"/>
+  <text x="92" y="122" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700">SKY SCRAPER</text>
+  <text x="96" y="168" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="22">MCP  ·  CDP  ·  LIVE FLIGHT DATA</text>
+  <rect x="96" y="286" width="318" height="92" rx="12" fill="#111E31" stroke="#244362"/>
+  <text x="122" y="322" fill="#5EEAD4" font-family="monospace" font-size="18">agent-browser</text>
+  <text x="122" y="353" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="17">API discovery</text>
+  <rect x="452" y="286" width="318" height="92" rx="12" fill="#111E31" stroke="#244362"/>
+  <text x="478" y="322" fill="#60A5FA" font-family="monospace" font-size="18">Chrome + CDP</text>
+  <text x="478" y="353" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="17">production capture</text>
+  <rect x="808" y="286" width="184" height="92" rx="12" fill="#111E31" stroke="#244362"/>
+  <text x="836" y="322" fill="#FBBF24" font-family="monospace" font-size="18">MCP</text>
+  <text x="836" y="353" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="17">agent tools</text>
+  <path d="M414 332H452M770 332H808" stroke="#64748B" stroke-width="3" stroke-dasharray="7 8"/>
+</svg>
