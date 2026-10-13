@@ -1,0 +1,60 @@
+---
+title: 'LingoBitz: Building Interactive Video Dictation Practice'
+date: '2026-10-12'
+lastmod: '2026-10-12'
+tags: ['nextjs', 'react', 'typescript', 'learning-product', 'ai']
+summary: 'How LingoBitz turns video into active listening practice with sentence-synchronized playback, progressive dictation modes, and a background transcription pipeline.'
+images: ['/static/images/projects/lingobitz-dictation.png']
+---
+
+## Overview
+
+LingoBitz is a language-learning product built around video. Learners can watch with synchronized transcripts or switch to sentence-level dictation, type what they hear, and receive immediate feedback. Practice supports three difficulty levels, from first-letter hints to free-form typing.
+
+![LingoBitz intermediate dictation mode with synchronized video and transcript practice](/static/images/projects/lingobitz-dictation.png)
+
+## Problem
+
+Watching videos can build context without giving learners a structured way to check what they actually hear. LingoBitz connects video playback to transcript navigation and focused dictation, so learners can practice a short sentence, review it, and continue at their own pace.
+
+## My Role
+
+I built the product and its supporting transcription workflow as a personal project. The frontend repository is public and the deployed product is available at the live demo link below.
+
+## Architecture / Workflow
+
+```text
+Video input
+  -> processing request and AWS SQS job queue
+  -> self-hosted worker for transcription
+  -> AI-assisted translation and structured learning data
+  -> Cloudflare R2 storage
+  -> Next.js application loads content for synchronized practice
+```
+
+The frontend keeps the video player, transcript, sentence navigation, and dictation state coordinated. Background processing handles transcription work outside the interactive learning screen; the UI consumes the prepared content for practice.
+
+## Key Engineering Decisions
+
+- **Sentence-level interaction:** Transcript rows are tied to video time so learners can navigate directly to the audio they want to practice.
+- **Progressive difficulty:** Beginner hints reveal first letters, intermediate practice reveals word lengths, and advanced mode accepts free-form typing.
+- **Background processing:** Queueing transcription jobs lets computationally expensive work run in workers instead of blocking the learner's session.
+- **Separate content storage:** Processed transcript and translation assets are stored in R2 and retrieved by the frontend.
+
+## User Experience
+
+Learners can switch between watch and practice modes, select a difficulty, replay or navigate sentence by sentence, and see feedback after submitting an answer. The interface also supports transcript synchronization and translation alongside the video.
+
+## Outcomes
+
+The product is deployed at [lingobitz.com](https://www.lingobitz.com), and its repository includes the working dictation modes and video/transcript experience. No usage, retention, or learning-outcome metrics are claimed here.
+
+## Tech Stack
+
+Next.js, React, TypeScript, Tailwind CSS, Node.js, AWS SQS, Cloudflare R2, AI APIs.
+
+## Links
+
+- [Live Demo](https://www.lingobitz.com)
+- [GitHub repository](https://github.com/ChunHao-dev/LingoBitz-Dictation-Pro)
+- [Back to selected projects](/en/projects)

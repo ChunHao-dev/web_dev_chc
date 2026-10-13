@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="1720" viewBox="0 0 960 1720" role="img" aria-labelledby="title desc">
+  <title id="title">English-learning video production workflow</title>
+  <desc id="desc">An iterative production workflow: the user reviews dialogue and either requests revisions or approves production; audio and visual assets are generated and reviewed, individual parts can be revised with dependent outputs regenerated and rechecked, and the approved package proceeds through validation and authenticated YouTube publishing.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#94a3b8"/></marker>
+    <style>
+      .bg{fill:#111827}.box{fill:#1f2937;stroke:#475569;stroke-width:2}.gate{fill:#172554;stroke:#60a5fa;stroke-width:2}.optional{fill:#1c2533;stroke:#64748b;stroke-width:2;stroke-dasharray:7 5}.title{fill:#f9fafb;font:600 21px Arial,sans-serif}.sub{fill:#cbd5e1;font:16px Arial,sans-serif}.gateText{fill:#bfdbfe;font:15px Arial,sans-serif}.label{fill:#94a3b8;font:700 13px Arial,sans-serif;letter-spacing:1.2px}.line{fill:none;stroke:#94a3b8;stroke-width:2.5;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect class="bg" width="960" height="1720" rx="22"/>
+  <text class="label" x="48" y="42">CONTENT PLANNING &amp; QUALITY GATES</text>
+  <g class="line">
+    <path d="M480 143v24"/><path d="M480 263v24"/><path d="M480 383v24"/><path d="M480 479v52"/>
+    <path d="M480 667v27"/><path d="M480 827v26"/><path d="M480 953v29"/><path d="M480 1079v26"/><path d="M480 1205v28"/><path d="M480 1361v27"/><path d="M480 1481v25"/>
+    <path d="M48 443H24V223H48"/><path d="M912 1297H936V588H912"/>
+  </g>
+  <g>
+    <rect class="box" x="48" y="63" width="864" height="80" rx="13"/><text class="title" x="76" y="97">1 · Choose profile, topic &amp; confirm facts</text><text class="sub" x="76" y="124">Check level, episode catalog, setting, roles, rules, and source facts</text>
+    <rect class="box" x="48" y="183" width="864" height="80" rx="13"/><text class="title" x="76" y="217">2 · Draft structured dialogue</text><text class="sub" x="76" y="244">Learner text · TTS text · speaker turns · scene assignments</text>
+    <rect class="box" x="48" y="303" width="864" height="80" rx="13"/><text class="title" x="76" y="337">3 · Review and revise dialogue</text><text class="sub" x="76" y="364">Facts · scene logic · naturalness · level fit · coherent resolution</text>
+    <rect class="gate" x="48" y="407" width="864" height="72" rx="13"/><text class="title" x="76" y="439">User decides: dialogue ready?</text><text class="gateText" x="76" y="463">Approve to continue · request changes to loop back to dialogue</text>
+
+    <rect class="box" x="48" y="531" width="864" height="114" rx="13"/><text class="title" x="76" y="563">4 · Generate the episode package</text><text class="sub" x="76" y="589">Speech: per-line and merged TTS audio · measured timings</text><text class="sub" x="76" y="613">Learning &amp; visuals: learning cards · referenced scene images · manifests</text><text class="sub" x="76" y="637">YouTube assets: thumbnail · title · description</text>
+
+    <rect class="box" x="48" y="694" width="864" height="133" rx="13"/><text class="title" x="76" y="730">5 · Keep episode assets traceable</text><text class="sub" x="76" y="760">Episode folder owns dialogue, audio, timings, images, manifests, and metadata.</text><text class="sub" x="76" y="787">Shared Remotion source provides reusable scenes and composition behavior.</text><text class="sub" x="76" y="814">Edits trigger regeneration and review of dependent outputs.</text>
+
+    <rect class="optional" x="48" y="853" width="864" height="100" rx="13"/><text class="title" x="76" y="889">Optional · Worksheets when requested</text><text class="sub" x="76" y="917">Generate Free/Pro PDFs · inspect text and rendered pages · publish via R2/D1</text><text class="sub" x="76" y="941">Cloudflare Worker provides the PDF download route</text>
+
+    <rect class="box" x="48" y="982" width="864" height="97" rx="13"/><text class="title" x="76" y="1018">6 · Compose, preview, revise, and render</text><text class="sub" x="76" y="1047">Remotion template aligns dialogue, audio, scene timing, cards, and phase timeline</text>
+    <rect class="box" x="48" y="1105" width="864" height="100" rx="13"/><text class="title" x="76" y="1141">7 · Run package and artifact checks</text><text class="sub" x="76" y="1170">check-package verifies files, schemas, timing, assets, metadata, and render inputs</text><text class="sub" x="76" y="1194">PDF checks apply only when the PDF option is enabled</text>
+    <rect class="gate" x="48" y="1233" width="864" height="128" rx="13"/><text class="title" x="76" y="1270">User reviews each part and the final output</text><text class="gateText" x="76" y="1300">Request edits to any part · regenerate dependent outputs · review again</text><text class="gateText" x="76" y="1327">Approve publishing only when all required artifacts and checks pass</text>
+    <rect class="box" x="48" y="1388" width="864" height="93" rx="13"/><text class="title" x="76" y="1425">8 · Publish approved video</text><text class="sub" x="76" y="1454">Authenticated YouTube API · upload only after explicit human approval</text>
+    <rect class="box" x="48" y="1506" width="864" height="92" rx="13"/><text class="title" x="76" y="1543">9 · Verify delivery and record the result</text><text class="sub" x="76" y="1572">Confirm requested public output and downloads; update the episode catalog</text>
+    <text class="label" x="21" y="402" transform="rotate(-90 21 402)">REVISE DIALOGUE</text>
+    <text class="label" x="933" y="1010" transform="rotate(-90 933 1010)">EDIT PART · REGENERATE DEPENDENCIES · REVIEW AGAIN</text>
+  </g>
+</svg>

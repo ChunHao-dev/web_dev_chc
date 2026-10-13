@@ -1,0 +1,79 @@
+---
+title: 'AI Media Production System: From Episode Brief to Published Video'
+date: '2026-10-12'
+lastmod: '2026-10-13'
+tags: ['ai-workflows', 'media-engineering', 'typescript', 'remotion', 'cloudflare']
+summary: 'How I use AI tools, text-to-speech, reusable Remotion templates, and human review to produce English-learning videos and prepare them for YouTube.'
+images: ['/static/images/projects/english-in-a-moment-channel.png']
+---
+
+## Overview
+
+I use this workflow to produce English-learning videos, from choosing a topic to preparing a video for YouTube. It helps me draft and review dialogue, generate audio and visual assets, assemble the video with reusable Remotion templates, and prepare the final files for publishing. I use the workflow to make episodes today. A dedicated web interface for managing and editing them is still in progress.
+
+## Problem
+
+Producing a learning video takes more than writing a script. The dialogue must fit the learner's level and the situation. Audio, scenes, captions, learning materials, and video timing must all match it. Doing these checks by hand for every episode makes mistakes easier and the process harder to repeat.
+
+## My Role
+
+I designed and maintain the production workflow, its skills and episode files, and the reusable video templates. I use it to make episodes and review the results. This is a personal project. Its web interface for managing and editing episodes is not finished or deployed yet.
+
+## Architecture / Workflow
+
+![Iterative AI media production workflow from dialogue approval through asset generation, review, and publishing](/static/images/projects/ai-media-workflow.svg?v=2)
+
+### 1. Plan and review the dialogue
+
+I start each episode by choosing a topic and learner level. I check the topic against the series catalog and prepare a fact sheet with the setting, speakers, available objects or services, and any claims that need checking. The dialogue is stored in a structured format with the spoken lines, speaker names, pronunciation-friendly text for text-to-speech (TTS), and scene assignments.
+
+Before production, I review the dialogue for two things: whether the conversation makes sense in real life, and whether its grammar and vocabulary fit the learner level. I check that the speakers act on information they could know, that events happen in a sensible order, and that the situation reaches a useful outcome. I then decide whether to approve the dialogue. If it needs work, I revise it and review it again. Production starts only after approval. I also check learning cards against the exact dialogue lines they teach.
+
+### 2. Create audio, images, and learning materials
+
+The shared speech workflow creates an audio file for each dialogue line, combines them into a full dialogue track, and measures when each line starts and ends. Edge TTS is the default for new episodes. I use configured F5-TTS or Qwen3-TTS profiles when a project calls for them. If I change the dialogue, I regenerate the affected audio and timing data so the video stays in sync.
+
+I use Codex with the series' visual references to create or check scene images. A scene manifest (a file that maps each image to its dialogue lines and scene description) helps me check that the image shows the right people, objects, and action. The workflow also creates learning cards, a video thumbnail, and a YouTube title and description from the approved episode content.
+
+I review these materials and can request changes to any part. When a source changes, I regenerate or recheck the outputs that depend on it. For example, a dialogue change may require new audio and timings; a scene change may require a new video render.
+
+### 3. Assemble and check the video
+
+Each episode keeps its own dialogue, audio, timings, images, metadata, and review records. A shared Remotion project provides the video layout. It loads the current episode's files and combines the scenes, speech, subtitles, and learning cards. I preview the video before rendering the final version.
+
+Before an episode is ready, `check-package` checks that required files are present and valid. It also checks that dialogue lines match their timings and audio, scene images are assigned, and the title, thumbnail, description, and video timeline are complete. If PDFs are enabled, it checks those files and their download links too. If a review or check finds a problem, I fix the relevant part and repeat the checks affected by that change. A successful video render by itself does not mean the full package is ready.
+
+### 4. Optional PDFs and publishing
+
+PDF worksheets are optional. When requested, the workflow creates Free and Pro versions, checks their content and structure, and inspects the rendered pages for cut-off text, overlap, placeholders, and readability. When PDF publishing is requested and the uploader is available, files are stored in Cloudflare R2/D1 and delivered through a Cloudflare Worker.
+
+Publishing to YouTube requires a person's approval. After the video and required files pass review, the workflow uses the authenticated YouTube API to publish them. A final checklist checks the requested outputs and links, then records the episode's status in the series catalog. The web interface for managing these steps is still in development.
+
+## Key Engineering Decisions
+
+- **People approve each stage:** I approve the dialogue before production and review the generated materials before publishing. I can send an item back for changes, then recheck the outputs affected by that change.
+- **Different checks catch different problems:** Content reviews check the story, learner level, images, and metadata. Automated checks look for missing files, invalid data, mismatched timings, and incomplete outputs.
+- **Episode files stay together:** Each episode keeps its own source files and review records, making it easier to trace where its assets came from.
+- **One video layout serves many episodes:** Episode content is kept separate from the shared Remotion template, so new topics can use the same video layout.
+- **PDFs are optional:** Worksheet creation and Cloudflare delivery are used only when an episode needs PDFs.
+
+## User Experience
+
+The workflow produces videos with dialogue, synchronized audio, scene images, and practice materials. I review the content and preview the video before checking that the required files are complete. The web interface for managing and editing episodes is still in development.
+
+## Outcomes
+
+The workflow has produced MP4 episodes, thumbnails, dialogue, audio, and scene images. The [English in a Moment YouTube channel](https://www.youtube.com/@English-in-a-Moment) includes published videos made with it. The image below is one example thumbnail:
+
+![Thumbnail for an English-learning video produced by the workflow](/static/images/projects/ai-media-output.png)
+
+The project does not claim a measured production-time reduction or audience result.
+
+## Tech Stack
+
+TypeScript, AI agents, LLM APIs, TTS, Remotion, Cloudflare R2, Cloudflare Workers, YouTube API.
+
+## Links
+
+- [Back to selected projects](/en/projects)
+- [YouTube Channel](https://www.youtube.com/@English-in-a-Moment)

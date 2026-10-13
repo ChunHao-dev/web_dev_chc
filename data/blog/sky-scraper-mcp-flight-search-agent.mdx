@@ -17,6 +17,14 @@ The project combines an open-source contribution to [agent-browser](https://gith
 
 ## The key design decision: discovery is different from production capture
 
+## My Role
+
+I investigated the browser network flow, contributed request-detail and filtering improvements upstream to `agent-browser`, then built the Chrome Extension and MCP server that perform repeatable on-demand searches. The open-source contribution and the personal integration project are separate pieces of this work.
+
+## Architecture / Workflow
+
+The production flow is an on-demand request: an MCP client sends route and date parameters, the server dispatches a task over WebSocket to a connected Chrome Extension, and the extension searches in the browser and returns normalized itinerary results. It does not stream flight prices continuously.
+
 The system has two distinct phases.
 
 ### Phase 1: discover the API with agent-browser
@@ -123,6 +131,28 @@ Browser automation fails in ways that ordinary HTTP clients do not. The project 
 - DOM scraping fallback when API capture is unavailable.
 
 The fallback is intentionally secondary. API capture is the preferred source, while DOM extraction keeps the workflow useful when the site's browser-side data flow changes or the preferred collection path is unavailable.
+
+## User Experience
+
+The agent can request a flight search using structured route and date inputs, then inspect grouped results such as cheapest overall, direct, or one-stop itineraries. Browser-specific request details stay inside the extension and are not exposed as agent-facing parameters.
+
+## Key Engineering Decisions
+
+The project separates **API discovery** from **production capture**: `agent-browser` helped identify and validate the browser's network behavior, while the extension performs repeated searches. MCP provides a narrow typed interface, and per-client task ownership keeps concurrent browser sessions from reading one another's results.
+
+## Outcomes
+
+The working flow returns normalized flight data through MCP and includes browser reconnect, queue, timeout, and DOM fallback behavior. The project is an experiment; no continuous monitoring or measured price savings are claimed.
+
+## Tech Stack
+
+TypeScript, MCP, Chrome Extension APIs, Chrome DevTools Protocol, WebSocket, Node.js, browser automation.
+
+## Links
+
+- [agent-browser source project](https://github.com/vercel-labs/agent-browser)
+- [My agent-browser contribution profile](https://github.com/ChunHao-dev)
+- [Back to selected projects](/en/projects)
 
 ## What I learned
 
